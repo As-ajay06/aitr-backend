@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
 import mongoose from "mongoose";
-import { FileModel, UserModel } from "./src/db.js";
+import { FileModel, UserModel } from "./src/config/db.js";
 import XLSX from 'xlsx';
 import cors from 'cors';
 import dotenv from 'dotenv';
