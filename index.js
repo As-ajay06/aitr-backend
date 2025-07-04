@@ -129,7 +129,8 @@ app.get("/excel-data", async (req, res) => {
 });
 
 // ✅ MongoDB connection with fallback
-const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/aitrDB";
+const mongoURI = process.env.MONGO_URI;
+const port = process.env.PORT;
 
 mongoose
   .connect(mongoURI, {
@@ -138,8 +139,8 @@ mongoose
   })
   .then(() => {
     console.log("✅ MongoDB connected");
-    app.listen(3000, () => {
-      console.log("🚀 Server running on http://localhost:3000");
+    app.listen(port, () => {
+      console.log(`🚀 Server running on http://localhost:${port}`);
     });
   })
   .catch((err) => console.error("❌ MongoDB connection failed:", err));
