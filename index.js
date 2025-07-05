@@ -9,6 +9,7 @@ const cors = require("cors");
 const studentRouter = require("./src/routes/studentRoutes.js");
 const instituteRouter = require("./src/routes/instituteRoutes.js");
 const facultyRouter = require("./src/routes/facultyRoutes.js");
+const departmentRouter = require("./src/routes/departmentRoutes.js");
 
 const app = express();
 const storage = multer.memoryStorage();
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use("/api/vi/students", studentRouter)
 app.use("/api/v1/institute", instituteRouter);
 app.use("/api/v1/faculty", facultyRouter);
+app.use("/api/v1/department", departmentRouter); 
 
 app.use(express.urlencoded({ extended: true }));
 
