@@ -25,14 +25,6 @@ app.use("/api/vi/students", studentRouter)
 app.use("/api/v1/institute", instituteRouter);
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
-
-// app.use("/api", adminRoutes)
-// app.use("/api", departmentRoutes)
-// app.use("/api", studentRoutes)
-// app.use("/api", facultyRoutes)
-// app.use("/api", instituteRoutes)
-
 
 // // ✅ Add faculty
 // app.post("/facultydata", async (req, res) => {
