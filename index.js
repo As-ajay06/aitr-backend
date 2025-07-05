@@ -10,7 +10,7 @@ const studentRouter = require("./src/routes/studentRoutes.js");
 const instituteRouter = require("./src/routes/instituteRoutes.js");
 const facultyRouter = require("./src/routes/facultyRoutes.js");
 const departmentRouter = require("./src/routes/departmentRoutes.js");
-
+const adminRouter = require("./src/routes/adminRoutes.js");
 const app = express();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -22,6 +22,7 @@ const upload = multer({ storage });
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/v1/admin", adminRouter);
 app.use("/api/vi/students", studentRouter)
 app.use("/api/v1/institute", instituteRouter);
 app.use("/api/v1/faculty", facultyRouter);
@@ -29,29 +30,6 @@ app.use("/api/v1/department", departmentRouter);
 
 app.use(express.urlencoded({ extended: true }));
 
-
-// // ✅ Add faculty
-// app.post("/facultydata", async (req, res) => {
-//   const { name, email, department, mobile_no, years_of_experience, designation } = req.body;
-
-//   const userData = new UserModel({
-//     name,
-//     email,
-//     department,
-//     mobile_no,
-//     years_of_experience,
-//     designation
-//   });
-
-//   await userData.save();
-//   res.json({ message: "Faculty added" });
-// });
-
-// // ✅ Get all faculty
-// app.get("/facultydata", async (req, res) => {
-//   const response = await UserModel.find({});
-//   res.json({ response });
-// });
 
 // // ✅ Upload file as base64
 // app.post("/file", upload.single("file"), async (req, res) => {
