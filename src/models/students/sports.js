@@ -1,0 +1,63 @@
+const mongoose = require('mongoose');
+
+const StudentSportsEventSchema = new mongoose.Schema({
+  sportsEventId: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  studentName: {
+    type: String,
+    required: true
+  },
+  enrollmentNumber: {
+    type: String,
+    required: true
+  },
+  branch: {
+    type: String,
+    required: true
+  },
+  batch: {
+    type: String,
+    required: true
+  },
+  year: {
+    type: Number
+  },
+  sportsName: {
+    type: String,
+    required: true
+  },
+  eventDate: {
+    type: Date,
+    required: true
+  },
+  eventName: {
+    type: String,
+    required: true
+  },
+  eventLevel: {
+    type: String,
+    enum: ['Institute', 'State', 'National', 'International']
+  },
+  eventLocation: {
+    type: String
+  },
+  position: {
+    type: String // e.g., "1st", "Runner-up", "Participation"
+  },
+  certificatePDF: {
+    type: String // file path or URL
+  },
+  coachName: {
+    type: String
+  },
+  organizer: {
+    type: String
+  }
+}, {
+  timestamps: true
+});
+
+module.exports = mongoose.model('StudentSportsEvent', StudentSportsEventSchema);

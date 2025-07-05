@@ -2,7 +2,6 @@
   "name": "aitr-cms-be",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
@@ -19,5 +18,8 @@
     "mongoose": "^8.15.1",
     "multer": "^2.0.1",
     "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3"
   }
 }
