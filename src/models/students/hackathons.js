@@ -51,3 +51,4 @@ const StudentHackathonSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('StudentHackathon', StudentHackathonSchema);
+
