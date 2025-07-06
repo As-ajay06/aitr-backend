@@ -1,4 +1,4 @@
-const acadmicQualification = require("../../models/faculty/acadmicDiscipline");
+const acadmicQualification = require("../../models/faculty/acadmicQualificationDiscipline");
 
 exports.createAcademicQualification = async (req, res) => {
     const qualification = new acadmicQualification(req.body);

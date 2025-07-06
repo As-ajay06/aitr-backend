@@ -23,4 +23,4 @@ const researchPaperGuided = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("AcademicProject", researchPaperGuided);
+module.exports = mongoose.model("facultyReasearchPaper", researchPaperGuided);

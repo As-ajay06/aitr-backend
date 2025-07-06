@@ -33,4 +33,4 @@ const invitedTalks = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("FacultyEngagement", invitedTalks);
+module.exports = mongoose.model("invitedTalks", invitedTalks);

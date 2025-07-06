@@ -28,4 +28,4 @@ const booksChapterdAuthored = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("FacultyPublicationBook", booksChapterdAuthored);
+module.exports = mongoose.model("booksChapterdAuthored", booksChapterdAuthored);

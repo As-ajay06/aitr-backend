@@ -34,4 +34,4 @@ const EventGrant = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("ExternalEvent", EventGrant);
+module.exports = mongoose.model("EventGrant", EventGrant);

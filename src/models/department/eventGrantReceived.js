@@ -61,4 +61,4 @@ const eventGrantReceived = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("FundedEvent", eventGrantReceived);
+module.exports = mongoose.model("eventGrantReceived", eventGrantReceived);

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const AgencyCollaborationSchema = new mongoose.Schema({
+const InstituteRD = new mongoose.Schema({
   agencyName: {
     type: String,
     required: true
@@ -26,4 +26,4 @@ const AgencyCollaborationSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("AgencyCollaboration", AgencyCollaborationSchema);
+module.exports = mongoose.model("InstituteRD", InstituteRD);

@@ -51,4 +51,4 @@ const FacultyAwardsRecognition = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("AwardRecognition", FacultyAwardsRecognition);
+module.exports = mongoose.model("FacultyAwardsRecognition", FacultyAwardsRecognition);

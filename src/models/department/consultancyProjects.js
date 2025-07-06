@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const ConsultancyProjectSchema = new mongoose.Schema({
   departmentName: {
@@ -25,7 +26,7 @@ const ConsultancyProjectSchema = new mongoose.Schema({
     type: String // or Number if you prefer monetary values
   },
   pdfUrl: {
-    type: String // Path to uploaded PDF
+    type: Schema.Types.ObjectId, ref : "File" // Path to uploaded PDF
   },
   titleOfConsultancy: {
     type: String,

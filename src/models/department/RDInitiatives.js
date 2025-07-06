@@ -52,4 +52,4 @@ const RDInitiavites = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("ResearchProject", RDInitiavites);
+module.exports = mongoose.model("RDinitiavtives", RDInitiavites);

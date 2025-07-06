@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const FacultyPatentSchema = new mongoose.Schema({
+const Patentpublished = new mongoose.Schema({
   facultyId: {
     type: String,
     required: true
@@ -66,4 +66,4 @@ const FacultyPatentSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("FacultyPatent", FacultyPatentSchema);
+module.exports = mongoose.model("FacultyPatent", Patentpublished);

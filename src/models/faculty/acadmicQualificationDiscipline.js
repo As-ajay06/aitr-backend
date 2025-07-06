@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const acadmicQualification = new mongoose.Schema({
+const acadmicQualificationDiscipline = new mongoose.Schema({
   facultyName: {
     type: String,
     required: true
@@ -28,4 +28,4 @@ const acadmicQualification = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("FacultyQualification", acadmicQualification);
+module.exports = mongoose.model("acadmicQualificationDiscipline", acadmicQualificationDiscipline);

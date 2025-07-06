@@ -2,10 +2,11 @@ const express = require('express');
 const departmentRouter = express.Router();
 
 // Import and define routes for department counsultancy
-const { createConsultancyProject, getAllConsultancyProjects, deleteConsultancyProjectById } = require('../controllers/department/consultancyController');
+const { createConsultancyProject, getAllConsultancyProjects, deleteConsultancyProjectById, uploadFile } = require('../controllers/department/consultancyController');
 departmentRouter.post('/consultancy', createConsultancyProject);
 departmentRouter.get('/consultancies', getAllConsultancyProjects);
 departmentRouter.delete('/consultancy/:id', deleteConsultancyProjectById);   
+departmentRouter.post('/upload', uploadFile);
 
 // Import and define routes for department events grant received
 const { createEventGrantReceived, getAllEventGrantsReceived, deleteEventGrantReceivedById } = require('../controllers/department/eventGrantReceived');
@@ -23,7 +24,9 @@ departmentRouter.delete('/mou/:id', deleteMouById);
 const { createRDInitiative, getAllRDInitiatives, deleteRDInitiativeById } = require('../controllers/department/RDInitiative');
 departmentRouter.post('/rnd', createRDInitiative);
 departmentRouter.get('/rnds', getAllRDInitiatives);
-departmentRouter.delete('/rnd/:id', deleteRDInitiativeById);    
+departmentRouter.delete('/rnd/:id', deleteRDInitiativeById);   
+
+
 
 
 module.exports = departmentRouter;

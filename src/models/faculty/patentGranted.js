@@ -33,4 +33,4 @@ const patentsGranted = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("GrantedPatent", patentsGranted);
+module.exports = mongoose.model("patentsGranted", patentsGranted);
