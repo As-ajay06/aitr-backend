@@ -22,12 +22,12 @@ const PhdSupervisionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  registrationDate: {
-    type: Date,
-    required: function () {
-      return this.status === 'Ongoing';
-    }
-  },
+  // registrationDate: {
+  //   type: Date,
+  //   required: function () {
+  //     return this.status === 'Ongoing';
+  //   }
+  // },
   completionDate: {
     type: Date,
     required: function () {

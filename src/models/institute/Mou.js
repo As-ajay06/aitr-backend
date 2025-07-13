@@ -19,7 +19,7 @@ const MouSchema = new mongoose.Schema({
   funding: {
     type: Number // in INR or USD
   },
-  mouPdf: {
+  fileId: {
     type: String // URL or file path to the uploaded PDF
   }
 }, {

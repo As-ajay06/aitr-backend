@@ -26,7 +26,7 @@ const patentsGranted = new mongoose.Schema({
     type: String,
     required: true
   },
-  patentCertificateUrl: {
+  fileId: {
     type: String // File path or cloud URL of the PDF
   }
 }, {

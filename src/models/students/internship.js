@@ -48,7 +48,7 @@ const StudentInternshipSchema = new mongoose.Schema({
   endDate: {
     type: Date
   },
-  certificateOrReport: {
+  fileId: {
     type: String // File path or URL
   },
   technologyUsed: {

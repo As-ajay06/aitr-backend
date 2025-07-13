@@ -26,3 +26,14 @@ exports.deleteAcademicQualificationById = async (req, res) => {
     });
 }
 
+exports.addExelData = async(req, res) => {
+      try {
+        const jsonData = req.body.data;
+        const qualification = new acadmicQualification(jsonData);
+        await qualification.save();
+        res.status(200).send({ message: 'Data saved to MongoDB!' });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Server error' });
+      }
+}

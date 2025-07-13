@@ -36,7 +36,7 @@ const eventGrantReceived = new mongoose.Schema({
   funding: {
     type: String // or Number
   },
-  pdfUrl: {
+  fileId: {
     type: String // uploaded proposal/approval PDF
   },
   eventTitle: {

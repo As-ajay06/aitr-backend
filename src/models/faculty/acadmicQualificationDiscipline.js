@@ -21,7 +21,7 @@ const acadmicQualificationDiscipline = new mongoose.Schema({
     type: Number,
     required: true
   },
-  certificateUrl: {
+  fileId: {
     type: String // file path or cloud URL
   }
 }, {

@@ -16,14 +16,19 @@ const dbConnect = async () => {
 dbConnect();
 
 
-// const fileSchema = new mongoose.Schema({
-//   name: String,
-//   data: String, // base64 string
-//   mimetype: String,
-//   size: Number,
-//   uploadedAt: { type: Date, default: Date.now },
-// });
+const fileSchema = new mongoose.Schema({
+  name: String,
+  data: String, // base64 string
+  mimetype: String,
+  size: Number,
+  uploadedAt: { type: Date, default: Date.now },
+});
 
+
+
+const ExcelDataSchema = new mongoose.Schema({}, { strict: false });
+
+const ExcelModel = mongoose.model('ExcelData', ExcelDataSchema);
 // const UserSchema = new mongoose.Schema({
 //   name: String,
 //   email: String,
@@ -36,9 +41,6 @@ dbConnect();
 
 
 // const UserModel = mongoose.model("users", UserSchema);
-// const FileModel = mongoose.model("File", fileSchema);
+const FileModel = mongoose.model("File", fileSchema);
 
-// module.exports = {
-//   UserModel,
-//   FileModel
-// }
+module.exports = {FileModel, ExcelModel}

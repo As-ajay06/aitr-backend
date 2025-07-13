@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { type } = require("node:os");
 
 const FacultyAwardsRecognition = new mongoose.Schema({
   recipientId: {
@@ -19,10 +20,10 @@ const FacultyAwardsRecognition = new mongoose.Schema({
   },
   issuingOrganization: {
     type: String,
-    required: true
+    requird: true
   },
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   category: {
@@ -34,7 +35,7 @@ const FacultyAwardsRecognition = new mongoose.Schema({
   description: {
     type: String // Description or purpose of the award
   },
-  certificatePdfUrl: {
+  fileId: {
     type: String // Path or URL to certificate PDF
   },
   titleOfAward: {
@@ -44,9 +45,14 @@ const FacultyAwardsRecognition = new mongoose.Schema({
     type: String, // e.g., Institute, State, National, International
     enum: ['Institute', 'State', 'National', 'International']
   },
-  supportingDocumentUrl: {
-    type: String // Additional document (optional)
-  }
+  // supportingDocumentUrl: {
+    // type: String // Additional document (optional)
+  // },
+  fileId: 
+    {
+      type: String
+    } // Additional document (optional)
+  
 }, {
   timestamps: true
 });

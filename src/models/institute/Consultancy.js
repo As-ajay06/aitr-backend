@@ -19,7 +19,7 @@ const InstituteCosultancy = new mongoose.Schema({
   funding: {
     type: Number // e.g., 50000 or 1e5
   },
-  pdfUrl: {
+  fileId: {
     type: String // Path or URL to the uploaded PDF
   }
 }, {

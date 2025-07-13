@@ -19,7 +19,7 @@ const InstituteRD = new mongoose.Schema({
   funding: {
     type: Number // Optional: in ₹ or $
   },
-  pdfUrl: {
+  fileId: {
     type: String // Path or URL to the uploaded PDF
   }
 }, {

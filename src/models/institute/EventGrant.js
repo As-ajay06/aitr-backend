@@ -27,7 +27,7 @@ const EventGrant = new mongoose.Schema({
   funding: {
     type: Number // Optional: ₹ or $
   },
-  pdfUrl: {
+  fileId: {
     type: String // File path or cloud URL to uploaded PDF
   }
 }, {

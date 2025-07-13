@@ -39,7 +39,7 @@ const StudentResearchPaperSchema = new mongoose.Schema({
     type: [String], // e.g., ["Scopus", "SCI"]
     enum: ['Scopus', 'SCI', 'UGC', 'Web of Science', 'Others']
   },
-  paperPDF: {
+  fileId: {
     type: String // File path or URL
   },
   facultyGuide: {

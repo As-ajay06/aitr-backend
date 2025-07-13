@@ -4,9 +4,9 @@ const studentRouter = express.Router();
 
 // Define routes for student profiles
 const { createStudentProfile, getAllStudentProfiles, deleteStudentProfile } = require("../controllers/students/studentProfile.controller");
-studentRouter.post("/student" , createStudentProfile);
-studentRouter.get("/student" , getAllStudentProfiles);
-studentRouter.delete("/student/:id" , deleteStudentProfile);
+studentRouter.post("/profile" , createStudentProfile);
+studentRouter.get("/profiles" , getAllStudentProfiles);
+studentRouter.delete("/profile/:id" , deleteStudentProfile);
 
 // Import and define routes for startups
 const { createStartup, getAllStartups, deleteStartupById } = require("../controllers/students/startupsControllers");

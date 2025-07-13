@@ -43,7 +43,7 @@ const StudentPlacementSchema = new mongoose.Schema({
   joiningDate: {
     type: Date
   },
-  offerLetterPDF: {
+  fileId: {
     type: String // URL or local path to the file
   }
 }, {

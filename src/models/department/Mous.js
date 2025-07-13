@@ -24,7 +24,7 @@ const MoUSchema = new mongoose.Schema({
   funding: {
     type: String // or Number, based on how you want to store currency
   },
-  mouPdfUrl: {
+  fileId: {
     type: String // file path or cloud link to uploaded PDF
   },
   titleOfMoU: {

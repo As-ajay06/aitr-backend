@@ -9,4 +9,6 @@ const fileSchema = new mongoose.Schema({
   uploadedAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Files', fileSchema);
+const FileModel = mongoose.model('Files', fileSchema);
+
+module.exports = FileModel

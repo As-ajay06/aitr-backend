@@ -2,9 +2,11 @@
 const express = require("express")
 const multer = require("multer")
 const mongoose = require("mongoose")
-const { FileModel, UserModel } = require("./src/config/db.js");
+const FileModel = require("./src/config/db.js");
 const XLSX = require("xlsx")
 const cors = require("cors");
+const ExcelModel = require("./src/config/db.js")
+
 
 const studentRouter = require("./src/routes/studentRoutes.js");
 const instituteRouter = require("./src/routes/instituteRoutes.js");
@@ -21,56 +23,73 @@ const upload = multer({ storage });
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/admin", adminRouter);
-app.use("/api/vi/students", studentRouter)
+app.use("/api/v1/students", studentRouter)
 app.use("/api/v1/institute", instituteRouter);
 app.use("/api/v1/faculty", facultyRouter);
 app.use("/api/v1/department", departmentRouter); 
 
-app.use(express.urlencoded({ extended: true }));
 
 
-// // ✅ Upload file as base64
-// app.post("/file", upload.single("file"), async (req, res) => {
-//   try {
-//     const { originalname, mimetype, size, buffer } = req.file;
-//     const base64Data = buffer.toString("base64");
+// ✅ Upload file as base64
+app.post("/file", upload.single("file"), async (req, res) => {
 
-//     const savedFile = new FileModel({
-//       name: originalname,
-//       data: base64Data,
-//       mimetype,
-//       size,
-//     });
+  try {
 
-//     await savedFile.save();
-//     res.json({ message: "File uploaded successfully", fileId: savedFile._id });
-//   } catch (err) {
-//     console.error("❌ File Upload Error:", err);
-//     res.status(500).json({ error: "Failed to upload file" });
-//   }
-// });
+    console.log(req.file)
+    const { originalname, mimetype, size, buffer } = req.file;
+    const base64Data = buffer.toString("base64");
+
+    const savedFile = new FileModel({
+      name: originalname,
+      data: base64Data,
+      mimetype,
+      size,
+    });
+
+    await savedFile.save();
+    res.json({ message: "File uploaded successfully", fileId: savedFile._id });
+  } catch (err) {
+    console.error("❌ File Upload Error:", err);
+    res.status(500).json({ error: "Failed to upload file" });
+  }
+});
 
 // // ✅ Download file
-// app.get("/file/:id", async (req, res) => {
-//   try {
-//     const file = await FileModel.findById(req.params.id);
-//     if (!file) return res.status(404).send("File not found");
+app.get("/file/:id", async (req, res) => {
+  try {
+    const file = await FileModel.findById(req.params.id);
+    if (!file) return res.status(404).send("File not found");
 
-//     const buffer = Buffer.from(file.data, "base64");
+    const buffer = Buffer.from(file.data, "base64");
 
-//     res.set({
-//       "Content-Type": file.mimetype,
-//       "Content-Disposition": `attachment; filename="${file.name}"`,
-//     });
+    res.set({
+      "Content-Type": file.mimetype,
+      "Content-Disposition": `attachment; filename="${file.name}"`,
+    });
 
-//     res.send(buffer);
-//   } catch (err) {
-//     console.error("❌ File Download Error:", err);
-//     res.status(500).send("Error fetching file");
-//   }
-// });
+    res.send(buffer);
+  } catch (err) {
+    console.error("❌ File Download Error:", err);
+    res.status(500).send("Error fetching file");
+  }
+});
+
+
+app.post('/api/upload-excel', async (req, res) => {
+  try {
+    const jsonData = req.body.data;
+    console.log(jsonData)
+    await ExcelModel.insertMany(jsonData);
+    res.status(200).send({ message: 'Data saved to MongoDB!' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: 'Server error' });
+  }
+});
+
 
 // // ✅ Upload Excel and save data
 // app.post('/upload-excel', upload.single("file"), async (req, res) => {

@@ -43,9 +43,6 @@ const StudentCertificateSchema = new mongoose.Schema({
   gradeOrScore: {
     type: String // Can be string/number based on actual use
   },
-  certificateDescription: {
-    type: String
-  },
   modeOfLearning: {
     type: String, // e.g., Online, Offline, Hybrid
     enum: ['Online', 'Offline', 'Hybrid']
@@ -56,12 +53,15 @@ const StudentCertificateSchema = new mongoose.Schema({
   rankOrPosition: {
     type: String
   },
-  certificatePDF: {
-    type: String // URL or filename
+  certificateDescription: {
+    type: String
   },
   relevanceToProgramOrBranch: {
     type: String
-  }
+  },
+  fileId: {
+    type: String // URL or filename
+  },
 }, {
   timestamps: true
 });

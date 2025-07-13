@@ -32,7 +32,7 @@ const Patentpublished = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['Published', 'Under Review'],
+    enum: ["Filed", "Published", "Granted", "Expired", "Under Review"],
     required: true
   },
   coInventors: {
@@ -45,16 +45,19 @@ const Patentpublished = new mongoose.Schema({
   category: {
     type: String // e.g., Mechanical, Electrical, CS, etc.
   },
-  certificatePdfUrl: {
+  fileId: {
     type: String // File path or URL to patent document
   },
   patentTitle: {
     type: String,
     required: true
   },
+  patentType: {
+    type: String,
+  },
   inventors: {
     type: [String], // All inventors, including faculty
-    required: true
+    
   },
   publicationDate: {
     type: Date

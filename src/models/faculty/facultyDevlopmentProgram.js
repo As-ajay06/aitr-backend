@@ -17,6 +17,9 @@ const FacultyFdpSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  programName: {
+    type: String
+  },
   organizingInstitute: {
     type: String,
     required: true
@@ -45,7 +48,7 @@ const FacultyFdpSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  certificatePdfUrl: {
+  fileId: {
     type: String // file path or cloud storage URL
   },
   outcomeHighlights: {

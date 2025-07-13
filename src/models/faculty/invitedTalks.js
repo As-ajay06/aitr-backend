@@ -26,7 +26,7 @@ const invitedTalks = new mongoose.Schema({
     enum: ['Keynote', 'Panelist', 'Speaker', 'Chair', 'Other'],
     required: true
   },
-  certificateUrl: {
+  fileId: {
     type: String // File path or cloud link to certificate or letter
   }
 }, {

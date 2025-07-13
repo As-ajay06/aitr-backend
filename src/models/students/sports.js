@@ -47,7 +47,7 @@ const StudentSportsEventSchema = new mongoose.Schema({
   position: {
     type: String // e.g., "1st", "Runner-up", "Participation"
   },
-  certificatePDF: {
+  fileId: {
     type: String // file path or URL
   },
   coachName: {

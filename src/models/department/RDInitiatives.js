@@ -24,7 +24,7 @@ const RDInitiavites = new mongoose.Schema({
   funding: {
     type: String // or Number (e.g., "₹20,00,000")
   },
-  pdfUrl: {
+  fileId: {
     type: String // Path or link to uploaded project PDF
   },
   projectTitle: {

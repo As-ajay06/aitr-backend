@@ -27,7 +27,7 @@ const FacultyPublicationSchema = new mongoose.Schema({
   indexing: {
     type: String, // e.g., "SCI", "SCOPUS", "UGC", etc.
   },
-  paperPdfUrl: {
+  fileId: {
     type: String // URL or file path to PDF
   },
   issnNumber: {

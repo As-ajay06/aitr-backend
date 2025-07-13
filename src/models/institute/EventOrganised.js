@@ -35,7 +35,7 @@ const EventOrganisedSchema = new mongoose.Schema({
   funding: {
     type: Number // Optional: in ₹ or $
   },
-  pdfUrl: {
+  fileId: {
     type: String // File path or cloud storage URL
   }
 }, {

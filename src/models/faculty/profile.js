@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const FacultyProfileSchema = new mongoose.Schema({
   facultyId: {
     type: String,
-    required: true,
     unique: true
   },
   name: {
@@ -17,22 +16,20 @@ const FacultyProfileSchema = new mongoose.Schema({
   },
   qualification: {
     type: String,
-    required: true
   },
   department: {
     type: String,
     required: true
   },
   mobileNumber: {
-    type: String,
+    type: Number,
     required: true
   },
   category: {
     type: String, // e.g., General, SC, ST, OBC
-    required: true
   },
   teachingExperience: {
-    type: Number, // in years
+    type: String, // in years
     required: true
   },
   industrialExperience: {

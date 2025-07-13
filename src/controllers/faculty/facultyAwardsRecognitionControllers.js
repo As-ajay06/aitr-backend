@@ -1,5 +1,7 @@
 const FacultyAwardsRecognition = require("../../models/faculty/facultyAwardsandRecognisation");
 
+
+
 exports.createFacultyAwardRecognition = async (req, res) => {
     try {
         const facultyAwardRecognition = new FacultyAwardsRecognition(req.body);
@@ -47,3 +49,4 @@ exports.deleteFacultyAwardRecognitionById = async (req, res) => {
         });
     }
 }   
+

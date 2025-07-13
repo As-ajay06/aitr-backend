@@ -16,7 +16,7 @@ const researchPaperGuided = new mongoose.Schema({
   },
   outcome: {
     type: [String], // multiple outcomes possible
-    enum: ['Publication', 'Patent', 'Prototype', 'Presentation', 'Product', 'Other'],
+    enum: ['Publication', 'Patent', 'Prototype', 'Other'],
     required: true
   }
 }, {

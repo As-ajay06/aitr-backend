@@ -1,17 +1,22 @@
 const express = require('express');
 const facultyRouter = express.Router();
 
+
 // Import and define routes for acedminc qualification
-const { createAcademicQualification, getAllAcademicQualifications, deleteAcademicQualificationById } = require('../controllers/faculty/acadmicQualification');
+const { createAcademicQualification, getAllAcademicQualifications, deleteAcademicQualificationById, addExelData } = require('../controllers/faculty/acadmicQualification');
 facultyRouter.post('/academic-qualification', createAcademicQualification);
 facultyRouter.get('/academic-qualifications', getAllAcademicQualifications);
 facultyRouter.delete('/academic-qualification/:id', deleteAcademicQualificationById);
+facultyRouter.post('/upload-excel', addExelData)
+
+
 
 // Import and define routes for faculty award recognition
 const { createFacultyAwardRecognition, getAllFacultyAwardsRecognitions, deleteFacultyAwardRecognitionById } = require('../controllers/faculty/facultyAwardsRecognitionControllers');
 facultyRouter.post('/award-recognition', createFacultyAwardRecognition);
 facultyRouter.get('/award-recognitions', getAllFacultyAwardsRecognitions);
-facultyRouter.delete('/award-recognition/:id', deleteFacultyAwardRecognitionById); 
+facultyRouter.delete('/award-recognition/:id', deleteFacultyAwardRecognitionById);
+
 
 // Import and define routes for books authored
 const { createBooksAuthored, getAllBooksAuthored, deleteBooksAuthoredById } = require('../controllers/faculty/booksAuthoredControllers');
@@ -31,7 +36,8 @@ facultyRouter.post('/invited-talk', createInvitedTalk);
 facultyRouter.get('/invited-talks', getAllInvitedTalks);
 facultyRouter.delete('/invited-talk/:id', deleteInvitedTalkById);
 
-// Import and define routes for patent Granted 
+// Import and define route
+// s for patent Granted 
 const { createPatentGranted, getAllPatentsGranted, deletePatentGrantedById } = require('../controllers/faculty/patentsGrantedControllers');
 facultyRouter.post('/patent-granted', createPatentGranted);
 facultyRouter.get('/patents-granted', getAllPatentsGranted);
@@ -72,5 +78,11 @@ const { createResearchProjectGuided, getAllResearchProjectsGuided, deleteResearc
 facultyRouter.post('/research-project-guided', createResearchProjectGuided);
 facultyRouter.get('/research-projects-guided', getAllResearchProjectsGuided);
 facultyRouter.delete('/research-project-guided/:id', deleteResearchProjectGuidedById);
+
+
+const { createFacultyMembership, getAllFacultyMembership, deleteFacultyMembership } = require("../controllers/faculty/facultyMembershipController")
+facultyRouter.post('/factulty-membership', createFacultyMembership);
+facultyRouter.get('/faculty-membership', getAllFacultyMembership);
+facultyRouter.delete('/faculty-membership/:id', deleteFacultyMembership);
 
 module.exports = facultyRouter;
