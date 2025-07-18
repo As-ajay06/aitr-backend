@@ -2,7 +2,7 @@
 
 
 ```
-    git clono
+    git clone
 
     cd [folder]
 
