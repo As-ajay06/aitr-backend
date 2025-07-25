@@ -42,4 +42,4 @@ const EventOrganisedSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("CollaborativeEvent", EventOrganisedSchema);
+module.exports = mongoose.model("eventGrantOrganised", EventOrganisedSchema);

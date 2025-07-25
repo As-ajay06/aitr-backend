@@ -87,4 +87,4 @@ const StudentCompetitionSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('StudentCompetition', StudentCompetitionSchema);
+module.exports = mongoose.model('studentTechnicalData', StudentCompetitionSchema);

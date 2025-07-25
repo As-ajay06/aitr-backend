@@ -1,7 +1,7 @@
-const tehnicalController = require("../../models/students/technicalCertification");
+const studentTechincalData = require("../../models/students/technicalCertification");
 
 exports.createTechnicalNonTechnical = async (req, res) => {
-    const technicalData = new tehnicalController(req.body);
+    const technicalData = new studentTechincalData(req.body);
     await technicalData.save();
     res.json({
         message: "Technical data created successfully"
@@ -9,7 +9,7 @@ exports.createTechnicalNonTechnical = async (req, res) => {
 }
 
 exports.getTechnicalNonTechnical = async (req, res) => {
-    const technicalData = await tehnicalController.find({});
+    const technicalData = await studentTechincalData.find({});
     res.json({
         technicalData
     });
@@ -17,7 +17,7 @@ exports.getTechnicalNonTechnical = async (req, res) => {
 
 exports.deleteTechnicalNonTechnicalById = async (req, res) => {
     const { id } = req.params;
-    const technicalData = await tehnicalController.findByIdAndDelete(id);
+    const technicalData = await studentTechincalData.findByIdAndDelete(id);
     if (!technicalData) {
         return res.status(404).json({ message: "Technical data not found" });
     }
