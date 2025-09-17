@@ -13,6 +13,7 @@ const instituteRouter = require("./src/routes/instituteRoutes.js");
 const facultyRouter = require("./src/routes/facultyRoutes.js");
 const departmentRouter = require("./src/routes/departmentRoutes.js");
 const adminRouter = require("./src/routes/adminRoutes.js");
+const studentProfile = require("./src/models/students/studentProfile.js");
 const app = express();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -59,10 +60,16 @@ app.post("/file", upload.single("file"), async (req, res) => {
 
 // // ✅ Download file
 app.get("/file/:id", async (req, res) => {
-  try {
-    const file = await FileModel.findById(req.params.id);
-    if (!file) return res.status(404).send("File not found");
 
+  const id = req.params.id;
+  console.log(id)
+  try {
+     const file = await FileModel.findById(req.params.id);
+     
+    if (!file) {
+      return res.status(404).send("File not found in database");
+    }
+    console.log(file)
     const buffer = Buffer.from(file.data, "base64");
 
     res.set({

@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const fileSchema = require("../fileModel")
+
 const patentsGranted = new mongoose.Schema({
   patentTitle: {
     type: String,
@@ -26,8 +28,11 @@ const patentsGranted = new mongoose.Schema({
     type: String,
     required: true
   },
-  fileId: {
-    type: String // File path or cloud URL of the PDF
+  // fileId: {
+  //   type: String // File path or cloud URL of the PDF
+  // }
+  file : {  // name it *certificate* in future
+    type : fileSchema
   }
 }, {
   timestamps: true

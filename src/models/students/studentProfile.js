@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
+const fileSchema = require("../../models/fileModel")
 
 const StudentProfileSchema = new mongoose.Schema({
   studentId: {
@@ -59,7 +60,7 @@ const StudentProfileSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['Active', 'Graduated', 'Dropped', 'Suspended']
+    enum: ['Pursuing', 'Graduated', 'Dropped', 'Suspended']
   },
   githubLink: {
     type: String

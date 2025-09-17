@@ -26,21 +26,21 @@ const fileSchema = new mongoose.Schema({
 
 
 
-const ExcelDataSchema = new mongoose.Schema({}, { strict: false });
+// const ExcelDataSchema = new mongoose.Schema({}, { strict: false });
 
-const ExcelModel = mongoose.model('ExcelData', ExcelDataSchema);
-// const UserSchema = new mongoose.Schema({
-//   name: String,
-//   email: String,
-//   mobile_no : Number,
-//   department: String,
-//   designation : String,
-//   years_Of_Experience: String,
-//   fileId : { type: Schema.Types.ObjectId, ref : "File"}
-// })
+// const ExcelModel = mongoose.model('ExcelData', ExcelDataSchema);
+// // const UserSchema = new mongoose.Schema({
+// //   name: String,
+// //   email: String,
+// //   mobile_no : Number,
+// //   department: String,
+// //   designation : String,
+// //   years_Of_Experience: String,
+// //   fileId : { type: Schema.Types.ObjectId, ref : "File"}
+// // })
 
 
 // const UserModel = mongoose.model("users", UserSchema);
 const FileModel = mongoose.model("File", fileSchema);
 
-module.exports = {FileModel, ExcelModel}
+module.exports = FileModel;
