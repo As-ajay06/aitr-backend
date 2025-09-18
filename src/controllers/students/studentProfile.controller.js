@@ -16,12 +16,12 @@ exports.getAllStudentProfiles = async(req, res) => {
 }
 
 exports.deleteStudentProfile = async(req, res) => {
-    const { id } = req.params;
+    const {id} = req.params;
     const profile = await studenProfile.findById(id);
     if (!profile) {
         return res.status(404).json({ message: "Profile not found" });
     }
     res.json({
-        profile
+        "message": "succesfully deleted !"
     })
 }
