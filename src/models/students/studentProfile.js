@@ -76,7 +76,10 @@ const StudentProfileSchema = new mongoose.Schema({
   },
   address: {
     type: String
-  }
+  },
+  fileId: {
+    type: String
+  },
 }, {
   timestamps: true // Adds createdAt and updatedAt
 });
