@@ -39,7 +39,6 @@ const StudentSportsEventSchema = new mongoose.Schema({
   },
   eventLevel: {
     type: String,
-    enum: ['Institute', 'State', 'National', 'International']
   },
   eventLocation: {
     type: String
