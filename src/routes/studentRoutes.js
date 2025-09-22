@@ -71,10 +71,10 @@ studentRouter.delete("/extracurricular/:id", deleteExtraCurricularById);
 
 // Import and define routes for student techinical-Non technical skills
 const { createTechnicalNonTechnical, getTechnicalNonTechnical, deleteTechnicalNonTechnicalById } = require("../controllers/students/technicalControllers");
-studentRouter.post("/skill", createTechnicalNonTechnical);
-studentRouter.get("/skills", getTechnicalNonTechnical);
-studentRouter.delete("/skill/:id", deleteTechnicalNonTechnicalById);
+studentRouter.post("/technicalNontechnical", createTechnicalNonTechnical);
+studentRouter.get("/technicalNontechnical", getTechnicalNonTechnical);
+studentRouter.delete("/technicalNontechnical/:id", deleteTechnicalNonTechnicalById);
 
-
+// todo : to create route for the capstone project
 
 module.exports = studentRouter ;
