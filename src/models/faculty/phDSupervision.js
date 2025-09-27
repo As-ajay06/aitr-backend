@@ -15,7 +15,6 @@ const PhdSupervisionSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['Ongoing', 'Completed'],
     required: true
   },
   researchTopic: {

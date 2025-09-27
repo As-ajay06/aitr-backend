@@ -15,7 +15,6 @@ const StudentHackathonSchema = new mongoose.Schema({
   },
   result: {
     type: String,
-    enum: ['Selected', 'Winner', 'Finalist', 'Participant'],
     required: true
   },
   eventDate: {

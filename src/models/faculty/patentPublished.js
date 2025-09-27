@@ -32,7 +32,6 @@ const Patentpublished = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["Filed", "Published", "Granted", "Expired", "Under Review"],
     required: true
   },
   coInventors: {

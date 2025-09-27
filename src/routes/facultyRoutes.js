@@ -81,7 +81,7 @@ facultyRouter.delete('/research-project-guided/:id', deleteResearchProjectGuided
 
 
 const { createFacultyMembership, getAllFacultyMembership, deleteFacultyMembership } = require("../controllers/faculty/facultyMembershipController")
-facultyRouter.post('/factulty-membership', createFacultyMembership);
+facultyRouter.post('/faculty-membership', createFacultyMembership);
 facultyRouter.get('/faculty-membership', getAllFacultyMembership);
 facultyRouter.delete('/faculty-membership/:id', deleteFacultyMembership);
 

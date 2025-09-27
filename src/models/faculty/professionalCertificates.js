@@ -15,7 +15,6 @@ const professionalCertificate = new mongoose.Schema({
   },
   certificationLevel: {
     type: String, // e.g., Beginner, Intermediate, Advanced
-    enum: ['Beginner', 'Intermediate', 'Advanced', 'Expert', 'Other'],
     required: true
   },
   validityPeriod: {
@@ -26,7 +25,7 @@ const professionalCertificate = new mongoose.Schema({
     type: String, // e.g., "AI/ML", "Cybersecurity", etc.
     required: true
   },
-  certificateUrl: {
+  fileId: {
     type: String // Path or URL to uploaded certificate PDF
   }
 }, {

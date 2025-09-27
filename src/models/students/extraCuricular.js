@@ -35,7 +35,6 @@ const extraCurricular = new mongoose.Schema({
   },
   eventLevel: {
     type: String,
-    enum: ['Institute', 'State', 'National', 'International'],
     required: true
   },
   eventLocation: {

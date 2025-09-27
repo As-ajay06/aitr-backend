@@ -43,7 +43,6 @@ const FacultyAwardsRecognition = new mongoose.Schema({
   },
   level: {
     type: String, // e.g., Institute, State, National, International
-    enum: ['Institute', 'State', 'National', 'International']
   },
   // supportingDocumentUrl: {
     // type: String // Additional document (optional)

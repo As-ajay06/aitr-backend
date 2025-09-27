@@ -23,7 +23,6 @@ const invitedTalks = new mongoose.Schema({
   },
   natureOfEngagement: {
     type: String,
-    enum: ['Keynote', 'Panelist', 'Speaker', 'Chair', 'Other'],
     required: true
   },
   fileId: {

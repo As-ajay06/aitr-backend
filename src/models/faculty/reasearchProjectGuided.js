@@ -7,7 +7,6 @@ const researchPaperGuided = new mongoose.Schema({
   },
   level: {
     type: String,
-    enum: ['UG', 'PG', 'PhD'],
     required: true
   },
   studentNames: {
@@ -16,7 +15,6 @@ const researchPaperGuided = new mongoose.Schema({
   },
   outcome: {
     type: [String], // multiple outcomes possible
-    enum: ['Publication', 'Patent', 'Prototype', 'Other'],
     required: true
   }
 }, {

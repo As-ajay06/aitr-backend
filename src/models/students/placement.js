@@ -34,7 +34,6 @@ const StudentPlacementSchema = new mongoose.Schema({
   },
   placementType: {
     type: String,
-    enum: ['On Campus', 'Off Campus'],
     required: true
   },
   package: {

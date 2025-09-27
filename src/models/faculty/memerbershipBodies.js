@@ -25,7 +25,6 @@ const FacultyMembershipSchema = new mongoose.Schema({
   },
   currentStatus: {
     type: String,
-    enum: ['Active', 'Expired'],
     required: true
   }
 }, {

@@ -14,7 +14,6 @@ const StudentStartupSchema = new mongoose.Schema({
   },
   currentStatus: {
     type: String,
-    enum: ['Idea', 'Prototype', 'Registered'],
     required: true
   },
   websiteOrLink: {
