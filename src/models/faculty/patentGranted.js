@@ -2,13 +2,17 @@ const mongoose = require("mongoose");
 
 const fileSchema = require("../fileModel")
 
+const CoIntentorSchema = new mongoose.Schema({
+  memberName: { type: String, trim: true, default: '' },
+}, { _id: false });
+
 const patentsGranted = new mongoose.Schema({
   patentTitle: {
     type: String,
     required: true
   },
   inventors: {
-    type: [String], // All inventors' names
+    type: [CoIntentorSchema], // All inventors' names
     required: true
   },
   grantNumber: {
@@ -31,6 +35,7 @@ const patentsGranted = new mongoose.Schema({
   // fileId: {
   //   type: String // File path or cloud URL of the PDF
   // }
+  // todo
   file : {  // name it *certificate* in future
     type : fileSchema
   }

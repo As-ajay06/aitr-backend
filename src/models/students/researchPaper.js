@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const CoAuthorsSchema = new mongoose.Schema({
+  memberName: { type: String, trim: true, default: '' },
+}, { _id: false });
+
+const FacultyGuidedSchema = new mongoose.Schema({
+  memberName: { type: String, trim: true, default: '' },
+}, { _id: false });
+
 const StudentResearchPaperSchema = new mongoose.Schema({
   studentName: {
     type: String,
@@ -33,7 +41,7 @@ const StudentResearchPaperSchema = new mongoose.Schema({
     required: true
   },
   coAuthors: {
-    type: [String] // list of co-author names
+    type: [CoAuthorsSchema] // list of co-author names
   },
   indexing: {
     type: [String], // e.g., ["Scopus", "SCI"]
@@ -43,7 +51,7 @@ const StudentResearchPaperSchema = new mongoose.Schema({
     type: String // File path or URL
   },
   facultyGuide: {
-    type: String // Name of the faculty mentor/guide
+    type: [FacultyGuidedSchema] // Name of the faculty mentor/guide
   }
 }, {
   timestamps: true

@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+
+const TechologyUsedSchema = new mongoose.Schema({
+  technologyUsed : { type: String, trim: true, default: '' },
+}, { _id: false });
+
 const StudentCompetitionSchema = new mongoose.Schema({
   competitionId: {
     type: String,
@@ -55,7 +60,7 @@ const StudentCompetitionSchema = new mongoose.Schema({
     type: String
   },
   technologyUsed: {
-    type: [String] // Array of technologies
+    type: [TechologyUsedSchema] // Array of technologies
   },
   prizeMoney: {
     type: Number

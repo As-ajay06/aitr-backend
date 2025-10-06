@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 
+
+const CoIntentorSchema = new mongoose.Schema({
+  memberName: { type: String, trim: true, default: '' },
+}, { _id: false });
+
 const Patentpublished = new mongoose.Schema({
   facultyId: {
     type: String,
@@ -35,7 +40,7 @@ const Patentpublished = new mongoose.Schema({
     required: true
   },
   coInventors: {
-    type: [String] // Array of co-inventor names
+    type: [CoIntentorSchema] // Array of co-inventor names
   },
   country: {
     type: String,

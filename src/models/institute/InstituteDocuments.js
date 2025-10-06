@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const InstituteDocumentSchema = new mongoose.Schema({
   aicteAffiliationPdf: {
     type: String, // file path or cloud URL

@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 
+const MemberQualificationSchema = new mongoose.Schema({
+  memberName: { type: String, trim: true, default: '' },
+}, { _id: false });
+
 const acadmicQualificationDiscipline = new mongoose.Schema({
   facultyName: {
     type: String,
     required: true
   },
   highestDegree: {
-    type: String,
+    type: [MemberQualificationSchema],
     required: true // e.g., Ph.D., M.Tech, MBA
   },
   universityOrInstitute: {

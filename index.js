@@ -1,7 +1,6 @@
 
 const express = require("express")
 const multer = require("multer")
-const mongoose = require("mongoose")
 const FileModel = require("./src/config/db.js");
 const XLSX = require("xlsx")
 const cors = require("cors");
@@ -17,6 +16,7 @@ const studentProfile = require("./src/models/students/studentProfile.js");
 const app = express();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
+const uploadFile = multer({ dest: './fileUploads/student/hackathon' }); // temporary storage
 
 // // ✅ Schema for Excel rows
 // const ExcelRowSchema = new mongoose.Schema({}, { strict: false });
@@ -30,7 +30,57 @@ app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/students", studentRouter)
 app.use("/api/v1/institute", instituteRouter);
 app.use("/api/v1/faculty", facultyRouter);
-app.use("/api/v1/department", departmentRouter); 
+app.use("/api/v1/department", departmentRouter);
+
+const StudentHackathon = require("./src/models/students/hackathons.js")
+const fs = require("fs")
+
+
+app.post('/upload/hackathon', uploadFile.single('file'), async (req, res) => {
+    try {
+        if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+
+        // read Excel file
+        const workbook = XLSX.readFile(req.file.path);
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+
+        // convert sheet to JSON
+        const data = XLSX.utils.sheet_to_json(sheet);
+
+        // optional: transform fields if needed (e.g., teamDetails JSON)
+        const transformed = data.map((item) => {
+            if (item.teamDetails && typeof item.teamDetails === 'string') {
+                try {
+                    item.teamDetails = JSON.parse(item.teamDetails); // if stored as JSON string in Excel
+                } catch {
+                    item.teamDetails = [];
+                }
+            }
+            // convert numbers
+            if (item.teamSize) item.teamSize = Number(item.teamSize) || 0;
+            if (item.prizeMoney) item.prizeMoney = Number(item.prizeMoney) || 0;
+            if (item.eventDate) item.eventDate = new Date(item.eventDate);
+
+            return item;
+        });
+
+        // insert into MongoDB
+        const inserted = await StudentHackathon.insertMany(transformed);
+
+        // remove uploaded file
+        fs.unlinkSync(req.file.path);
+
+        return res.status(201).json({ insertedCount: inserted.length, inserted });
+    } catch (err) {
+        console.error('uploadHackathons error:', err);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+});
+
+
+
 
 
 

@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 
+const CoInvestigatorsSchema = new mongoose.Schema({
+  memberName: { type: String, trim: true, default: '' },
+}, { _id: false });
+
 const RDInitiavites = new mongoose.Schema({
   departmentName: {
     type: String,
@@ -40,7 +44,7 @@ const RDInitiavites = new mongoose.Schema({
     required: true
   },
   coInvestigator: {
-    type: String // or Array if multiple
+    type: [CoInvestigatorsSchema] // or Array if multiple
   },
   budget: {
     type: String // or Number

@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+const IndustryMentorSchema = new mongoose.Schema({
+  memberName: { type: String, trim: true, default: '' },
+}, { _id: false });
+
 const StudentProjectSchema = new mongoose.Schema({
   projectTitle: {
     type: String,
@@ -17,7 +21,7 @@ const StudentProjectSchema = new mongoose.Schema({
     type: String // Example: "6th", "Spring 2025", etc.
   },
   industryMentor: {
-    type: String // Optional
+    type: [IndustryMentorSchema] // Optional
   },
   projectOutcome: {
     type: [String], // e.g., ["Prototype", "Patent", "Paper"]

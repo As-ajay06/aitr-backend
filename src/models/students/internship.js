@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 
+
+const TechnologyUsedSchema = new mongoose.Schema({
+  memberName: { type: String, trim: true, default: '' },
+  role: { type: String, trim: true, default: '' }
+}, { _id: false });
+
+
 const StudentInternshipSchema = new mongoose.Schema({
   internshipId: {
     type: String,
@@ -52,7 +59,7 @@ const StudentInternshipSchema = new mongoose.Schema({
     type: String // File path or URL
   },
   technologyUsed: {
-    type: [String] // Array of technologies
+    type: [TechnologyUsedSchema] // Array of technologies
   },
   projectName: {
     type: String
