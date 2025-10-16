@@ -10,7 +10,7 @@ const dbConnect = async () => {
       console.log("Database connected! ");
     })
     .catch((err) => {
-      console.error(`Failed to connect database: ${err}`.red.bold);
+      console.error(`Failed to connect database: ${err}`);
     });
 };
 dbConnect();

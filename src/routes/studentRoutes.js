@@ -76,5 +76,6 @@ studentRouter.get("/technicalNontechnical", getTechnicalNonTechnical);
 studentRouter.delete("/technicalNontechnical/:id", deleteTechnicalNonTechnicalById);
 
 // todo : to create route for the capstone project
+// todo : to create route for internship
 
 module.exports = studentRouter ;

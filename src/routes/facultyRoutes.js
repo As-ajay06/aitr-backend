@@ -25,6 +25,7 @@ facultyRouter.get('/books-authored', getAllBooksAuthored);
 facultyRouter.delete('/book-authored/:id', deleteBooksAuthoredById); 
 
 // Import and define routes for devlopment programmes 
+// todo: program spelling is wrong
 const { createFacultyDevelopmentProgram, getAllFacultyDevelopmentPrograms, deleteFacultyDevelopmentProgramById } = require('../controllers/faculty/facultyDevlopmentProgramcontroller');
 facultyRouter.post('/development-programme', createFacultyDevelopmentProgram);
 facultyRouter.get('/development-programmes', getAllFacultyDevelopmentPrograms);
