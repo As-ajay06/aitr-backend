@@ -200,4 +200,6 @@ app.post('/api/upload-excel', async (req, res) => {
 // mongoose.connect(mongoURI)
 //   .then(() => console.log("connected"))
 
-app.listen(3000 , () => console.log("server started on port") )
+const port = 3000 ;
+
+app.listen(port , () => console.log(`server started on ${port}`) )
