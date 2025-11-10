@@ -1,6 +1,7 @@
 const studenProfile = require('../../models/students/studentProfile')
 
 exports.createStudentProfile = async(req, res) => {
+
     const profile = new studenProfile(req.body);
     await profile.save();
     res.json({

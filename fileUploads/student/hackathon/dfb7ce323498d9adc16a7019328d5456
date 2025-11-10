@@ -1,8 +1,0 @@
-_id,hackathonName,organizer,teamDetails,result,eventDate,teamName,teamSize,mentorName,venue,problemStatement,technologyUsed,prizeMoney,positionSecured
-686a7f589f998acea56f734b,EduHack,Google Dev Club,['Tanya', 'Aman'],Selected,2023-06-05T00:00:00.000Z,ScriptSquad,2,Dr. S. Batra,Online,AI-based content summarizer,['Python', 'HuggingFace'],0,Selected
-686a7f589f998acea56f734c,SmartApp Challenge,Microsoft,['Ishaan', 'Mira', 'Yash'],Winner,2023-10-03T00:00:00.000Z,AppWizards,3,Mr. Jatin Khurana,Mumbai,Traffic signal optimization,['Flutter', 'Firebase'],60000,Runner-up
-686a7f589f998acea56f734d,undefined,undefined,,undefined,undefined,undefined,undefined,undefined,undefined,undefined,,undefined,undefined
-686a7f589f998acea56f7348,Smart India Hackathon,AICTE,['Aarav', 'Diya', 'Rohan'],Winner,2023-08-12T00:00:00.000Z,CodeCrackers,3,Dr. Rajeev Sharma,Delhi,Automated healthcare booking system,['React', 'Node.js', 'MongoDB'],50000,1st
-686a7f589f998acea56f734a,Innovate-a-thon,NASSCOM,['Neha', 'Tarun', 'Sneha'],Participant,2023-09-22T00:00:00.000Z,ByteBuilders,3,Mr. Ashok Verma,Hyderabad,Job matching portal,['Vue.js', 'Express.js'],0,Participant
-686a7f589f998acea56f7349,CodeFest 2023,IEEE,['Kunal', 'Simran'],Finalist,2023-07-10T00:00:00.000Z,TechTigers,2,Ms. Anjali Mehra,Bangalore,E-waste recycling system,['Python', 'Flask'],25000,Top 5
-68d8fceef9d66f80adf706dd,aitr,acropolies,[object Object],[object Object],no position,2025-09-18T00:00:00.000Z,kriyeta,2,mayur sir,indore,undefined,next sj,400000,3rd

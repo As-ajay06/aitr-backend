@@ -3,45 +3,47 @@ const mongoose = require("mongoose");
 const FacultyProfileSchema = new mongoose.Schema({
   facultyId: {
     type: String,
-    unique: true
+    unique: true,
+    trim: true
   },
   name: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    lowercase: true,
+    trim: true
   },
-  qualification: {
-    type: String,
-  },
+  qualification: String,
   department: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   mobileNumber: {
-    type: Number,
-    required: true
+    type: String,
+    required: true,
+    match: /^[0-9]{10}$/,
   },
-  category: {
-    type: String, // e.g., General, SC, ST, OBC
-  },
+  category: String,
   teachingExperience: {
-    type: String, // in years
-    required: true
+    type: Number,
+    required: true,
+    min: 0
   },
   industrialExperience: {
-    type: Number, // in years
-    required: false
+    type: Number,
+    min: 0
   },
   designation: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   }
-}, {
-  timestamps: true
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model("FacultyProfile", FacultyProfileSchema);

@@ -18,70 +18,80 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 const uploadFile = multer({ dest: './fileUploads/student/hackathon' }); // temporary storage
 
+
+// file uploading routes
+
+const facultyFilesRouter = require("./src/fileRoutes/faculty/facultyFiles.js");
+const institueFilesRouter = require("./src/fileRoutes/institute/instituteFiles.js");
+const studentFilesRouter = require("./src/fileRoutes/student/studentFiles.js");
+const departmentFilesRouter = require("./src/fileRoutes/department/departmentFIles.js");
+
+
 // // ✅ Schema for Excel rows
 // const ExcelRowSchema = new mongoose.Schema({}, { strict: false });
 // const ExcelRow = mongoose.model("ExcelRow", ExcelRowSchema);
 
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(cors());
+app.use(express.json());
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/students", studentRouter)
 app.use("/api/v1/institute", instituteRouter);
 app.use("/api/v1/faculty", facultyRouter);
 app.use("/api/v1/department", departmentRouter);
 
+// file uploading routes
+app.use("/api/v1/upload/deparment" , departmentFilesRouter )
+app.use("/api/v1/upload/faculty" , facultyFilesRouter )
+app.use("/api/v1/upload/institute" , institueFilesRouter )
+app.use("/api/v1/upload/student" , studentFilesRouter )
+
+
 const StudentHackathon = require("./src/models/students/hackathons.js")
-const fs = require("fs")
+const fs = require("fs");
 
 
 app.post('/upload/hackathon', uploadFile.single('file'), async (req, res) => {
-    try {
-        if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  try {
+    if (!req.file) return res.status(400).send('No file uploaded');
 
-        // read Excel file
-        const workbook = XLSX.readFile(req.file.path);
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
+    // Read Excel file
+    const workbook = XLSX.read(req.file, { type: 'buffer' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-        // convert sheet to JSON
-        const data = XLSX.utils.sheet_to_json(sheet);
 
-        // optional: transform fields if needed (e.g., teamDetails JSON)
-        const transformed = data.map((item) => {
-            if (item.teamDetails && typeof item.teamDetails === 'string') {
-                try {
-                    item.teamDetails = JSON.parse(item.teamDetails); // if stored as JSON string in Excel
-                } catch {
-                    item.teamDetails = [];
-                }
-            }
-            // convert numbers
-            if (item.teamSize) item.teamSize = Number(item.teamSize) || 0;
-            if (item.prizeMoney) item.prizeMoney = Number(item.prizeMoney) || 0;
-            if (item.eventDate) item.eventDate = new Date(item.eventDate);
+    console.log("here" , jsonData)
 
-            return item;
-        });
+    // Map Excel JSON to StudentHackathon model
+    const hackathonData = jsonData.map(row => ({
+      hackathonName: row['Hackathon Name'] || '',
+      organizer: row['Organizer'] || '',
+      teamDetails: row['Team Details'] ? JSON.parse(row['Team Details']) : [],
+      result: row['Result'] || '',
+      eventDate: row['Event Date'] || '',
+      teamName: row['Team Name'] || '',
+      teamSize: row['Team Size'] || 0,
+      mentorName: row['Mentor Name'] || '',
+      venue: row['Venue'] || '',
+      problemStatement: row['Problem Statement'] || '',
+      technologyUsed: row['Technology Used'] ? JSON.parse(row['Technology Used']) : [],
+      prizeMoney: row['Prize Money'] || 0,
+      positionSecured: row['Position Secured'] || ''
+    }));
 
-        // insert into MongoDB
-        const inserted = await StudentHackathon.insertMany(transformed);
+    // Save to MongoDB
+    const savedData = await StudentHackathon.insertMany(hackathonData);
+    res.status(200).json({ message: 'Data saved successfully', data: savedData });
 
-        // remove uploaded file
-        fs.unlinkSync(req.file.path);
-
-        return res.status(201).json({ insertedCount: inserted.length, inserted });
-    } catch (err) {
-        console.error('uploadHackathons error:', err);
-        return res.status(500).json({ error: 'Internal Server Error' });
-    }
-
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error', error: error.message });
+  }
 });
-
-
-
-
 
 
 // ✅ Upload file as base64
@@ -114,8 +124,8 @@ app.get("/file/:id", async (req, res) => {
   const id = req.params.id;
   console.log(id)
   try {
-     const file = await FileModel.findById(req.params.id);
-     
+    const file = await FileModel.findById(req.params.id);
+
     if (!file) {
       return res.status(404).send("File not found in database");
     }
@@ -155,7 +165,7 @@ app.post('/api/upload-excel', async (req, res) => {
 
 //     const file = req.file;
 //     console.log(file)
-    
+
 
 //     const workbook = XLSX.read(req.file.buffer, { type: "buffer" });
 //     const sheetName = workbook.SheetNames[0];
@@ -200,6 +210,6 @@ app.post('/api/upload-excel', async (req, res) => {
 // mongoose.connect(mongoURI)
 //   .then(() => console.log("connected"))
 
-const port = 3000 ;
+const port = 3000;
 
-app.listen(port , () => console.log(`server started on ${port}`) )
+app.listen(port, () => console.log(`server started on ${port}`))
