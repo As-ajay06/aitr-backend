@@ -1,58 +1,52 @@
-const PersonalInfo = require("../../models/admin/adminProfile");
+require('dotenv').config()
+// routes/auth.js
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const superadmin = require("../../models/admin/superAdmin");
+const adminProfile = require('../../models/admin/adminProfile');
+const router = express.Router();
 
-// Create
-exports.createPersonalInfo = async (req, res) => {
+const jwt_secret = process.env.JWT_SECRET; // move this to .env
+
+// Register user (SuperAdmin should be created manually once)
+router.post("/register", async (req, res) => {
   try {
-    const newRecord = await PersonalInfo.create(req.body);
-    res.status(201).json(newRecord);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const { name, email, password, role } = req.body;
+
+    // Prevent anyone from creating a superadmin
+    if (role === "superadmin") {
+      return res.status(403).json({ message: "You cannot create a superadmin" });
+    }
+
+    const user = new adminProfile({ name, email, password, role });
+    await user.save();
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-};
+});
 
-// Get All
-exports.getAllPersonalInfo = async (req, res) => {
+// Login
+router.post("/login", async (req, res) => {
   try {
-    const allRecords = await PersonalInfo.find();
-    res.status(200).json(allRecords);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+    const { email, password } = req.body;
+    const user = await adminProfile.findOne({ email });
 
-// Get By ID
-exports.getPersonalInfoById = async (req, res) => {
-  try {
-    const record = await PersonalInfo.findById(req.params.id);
-    if (!record) return res.status(404).json({ error: "Record not found" });
-    res.status(200).json(record);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+    if (!user) return res.status(404).json({ message: "User not found" });
+    const isMatch = await user.comparePassword(password);
 
-// Update
-exports.updatePersonalInfo = async (req, res) => {
-  try {
-    const updated = await PersonalInfo.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
+    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
+
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      jwt_secret,
+      { expiresIn: "7d" }
     );
-    if (!updated) return res.status(404).json({ error: "Record not found" });
-    res.status(200).json(updated);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
 
-// Delete
-exports.deletePersonalInfo = async (req, res) => {
-  try {
-    const deleted = await PersonalInfo.findByIdAndDelete(req.params.id);
-    if (!deleted) return res.status(404).json({ error: "Record not found" });
-    res.status(200).json({ message: "Deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.json({ token, user: { name: user.name, email: user.email, role: user.role } });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-};
+});
+
+module.exports = router;
