@@ -26,6 +26,8 @@ exports.deleteAcademicQualificationById = async (req, res) => {
     });
 }
 
+// this code is not relevent . Maybe check in future.
+
 exports.addExelData = async(req, res) => {
       try {
         const jsonData = req.body.data;
