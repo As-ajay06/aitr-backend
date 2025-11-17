@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const { type } = require("node:os");
 
 const FacultyAwardsRecognition = new mongoose.Schema({
+  facultyId: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'FacultyProfile'
+  },
   recipientId: {
     type: String,
     required: true
@@ -45,13 +48,13 @@ const FacultyAwardsRecognition = new mongoose.Schema({
     type: String, // e.g., Institute, State, National, International
   },
   // supportingDocumentUrl: {
-    // type: String // Additional document (optional)
+  // type: String // Additional document (optional)
   // },
-  fileId: 
-    {
-      type: String
-    } // Additional document (optional)
-  
+  fileId:
+  {
+    type: String
+  } // Additional document (optional)
+
 }, {
   timestamps: true
 });

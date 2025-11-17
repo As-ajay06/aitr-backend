@@ -7,8 +7,7 @@ const CoIntentorSchema = new mongoose.Schema({
 
 const Patentpublished = new mongoose.Schema({
   facultyId: {
-    type: String,
-    required: true
+    type: mongoose.Schema.Types.ObjectId, ref: 'FacultyProfile'
   },
   facultyName: {
     type: String,
@@ -61,7 +60,7 @@ const Patentpublished = new mongoose.Schema({
   },
   inventors: {
     type: [String], // All inventors, including faculty
-    
+
   },
   publicationDate: {
     type: Date
