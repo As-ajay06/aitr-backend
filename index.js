@@ -7,6 +7,9 @@ const cors = require("cors");
 const ExcelModel = require("./src/config/db.js")
 
 
+const adminRouter = require("./src/controllers/admin/adminController.js")
+
+
 const studentRouter = require("./src/routes/studentRoutes.js");
 const instituteRouter = require("./src/routes/instituteRoutes.js");
 const facultyRouter = require("./src/routes/facultyRoutes.js");
@@ -25,6 +28,7 @@ const facultyFilesRouter = require("./src/fileRoutes/faculty/facultyFiles.js");
 const institueFilesRouter = require("./src/fileRoutes/institute/instituteFiles.js");
 const studentFilesRouter = require("./src/fileRoutes/student/studentFiles.js");
 const departmentFilesRouter = require("./src/fileRoutes/department/departmentFIles.js");
+const SearchController = require("./src/controllers/searchController/facultySearchController.js");
 
 
 // // ✅ Schema for Excel rows
@@ -36,6 +40,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 app.use(express.json());
+
+// admin routes
+app.use("/api/v1/admin" , adminRouter)
+
+// department routes
 app.use("/api/v1/students", studentRouter)
 app.use("/api/v1/institute", instituteRouter);
 app.use("/api/v1/faculty", facultyRouter);
@@ -48,8 +57,7 @@ app.use("/api/v1/upload/institute" , institueFilesRouter )
 app.use("/api/v1/upload/student" , studentFilesRouter )
 
 
-const StudentHackathon = require("./src/models/students/hackathons.js")
-const fs = require("fs");
+app.get("/search/:facultyId", SearchController.getInfo)
 
 
 // ✅ Upload file as base64

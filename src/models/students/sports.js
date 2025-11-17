@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const StudentSportsEventSchema = new mongoose.Schema({
+  studentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    unique: true // Assuming ID is unique
+  },
   sportsEventId: {
     type: String,
     required: true,

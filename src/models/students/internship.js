@@ -8,6 +8,12 @@ const TechnologyUsedSchema = new mongoose.Schema({
 
 
 const StudentInternshipSchema = new mongoose.Schema({
+
+  studentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    unique: true // Assuming ID is unique
+  },
   internshipId: {
     type: String,
     required: true,

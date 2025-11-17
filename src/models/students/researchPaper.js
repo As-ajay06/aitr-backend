@@ -9,6 +9,11 @@ const FacultyGuidedSchema = new mongoose.Schema({
 }, { _id: false });
 
 const StudentResearchPaperSchema = new mongoose.Schema({
+  studentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    unique: true // Assuming ID is unique
+  },
   studentName: {
     type: String,
     required: true

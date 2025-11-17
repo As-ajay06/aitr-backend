@@ -5,6 +5,11 @@ const IndustryMentorSchema = new mongoose.Schema({
 }, { _id: false });
 
 const StudentProjectSchema = new mongoose.Schema({
+  studentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    unique: true // Assuming ID is unique
+  },
   projectTitle: {
     type: String,
     required: true

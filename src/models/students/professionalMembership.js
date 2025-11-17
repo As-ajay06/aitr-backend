@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const StudentMembershipSchema = new mongoose.Schema({
+  studentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    unique: true // Assuming ID is unique
+  },
   organizationName: {
     type: String,
     required: true

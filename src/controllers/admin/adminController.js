@@ -59,8 +59,11 @@ adminRouter.post("/login", async (req, res) => {
 
     if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
+    // made changes here
+    const facultyId = user._id ;
+
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      { id: facultyId , role: user.role },
       jwt_secret,
       { expiresIn: "7d" }
     );
