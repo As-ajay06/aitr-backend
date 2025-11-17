@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const researchPaperGuided = new mongoose.Schema({
+  facultyId: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'FacultyProfile'
+  },
   projectTitle: {
     type: String,
     required: true

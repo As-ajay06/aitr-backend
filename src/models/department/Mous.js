@@ -48,7 +48,7 @@ const MoUSchema = new mongoose.Schema({
     required: true
   },
   fundSupportReceived: {
-    type: String // or Number if strictly numeric
+    type: String // tor Number if strictly numeric
   }
 }, {
   timestamps: true

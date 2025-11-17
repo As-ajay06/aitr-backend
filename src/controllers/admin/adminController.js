@@ -2,14 +2,14 @@ require('dotenv').config()
 // routes/auth.js
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const superadmin = require("../../models/admin/superAdmin");
 const adminProfile = require('../../models/admin/adminProfile');
-const router = express.Router();
+const superAdmin = require('../../models/admin/superAdmin');
+const adminRouter = express.Router();
 
 const jwt_secret = process.env.JWT_SECRET; // move this to .env
 
 // Register user (SuperAdmin should be created manually once)
-router.post("/register", async (req, res) => {
+adminRouter.post("/register", async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
@@ -26,10 +26,32 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// Login
-router.post("/login", async (req, res) => {
+
+// admin login
+adminRouter.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
+
+    // super admin check
+    if (role === "superadmin") {
+      const user = await superAdmin.findOne({ email , password });
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      const token = jwt.sign(
+        { id: user._id, role: user.role },
+        jwt_secret,
+        { expiresIn: "7d" }
+      );
+
+      res.status(200).json(
+        {
+          token,
+          user: { name: user.name, email: user.email, role: user.role }
+        });
+
+    }
     const user = await adminProfile.findOne({ email });
 
     if (!user) return res.status(404).json({ message: "User not found" });
@@ -49,4 +71,4 @@ router.post("/login", async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = adminRouter;

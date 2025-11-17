@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 
 const MemberQualificationSchema = new mongoose.Schema({
+
   memberName: { type: String, trim: true, default: '' },
 }, { _id: false });
 
 const acadmicQualificationDiscipline = new mongoose.Schema({
+  facultyId: {
+    type: mongoose.Schema.Types.ObjectId , ref: 'FacultyProfile'
+  },
   facultyName: {
     type: String,
     required: true

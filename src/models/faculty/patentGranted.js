@@ -7,6 +7,9 @@ const CoIntentorSchema = new mongoose.Schema({
 }, { _id: false });
 
 const patentsGranted = new mongoose.Schema({
+  facultyId: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'FacultyProfile'
+  },
   patentTitle: {
     type: String,
     required: true
@@ -36,8 +39,8 @@ const patentsGranted = new mongoose.Schema({
   //   type: String // File path or cloud URL of the PDF
   // }
   // todo
-  file : {  // name it *certificate* in future
-    type : fileSchema
+  file: {  // name it *certificate* in future
+    type: fileSchema
   }
 }, {
   timestamps: true

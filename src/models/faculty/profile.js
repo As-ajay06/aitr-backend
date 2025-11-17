@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const FacultyProfileSchema = new mongoose.Schema({
-  facultyId: {
-    type: String,
-    unique: true,
-    trim: true
-  },
+  // facultyId: {
+  //   type: String,
+  //   unique: true,
+  //   trim: true
+  // },
   name: {
     type: String,
     required: true,

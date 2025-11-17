@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const FacultyMembershipSchema = new mongoose.Schema({
+  facultyId: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'FacultyProfile'
+  },
   facultyName: {
     type: String,
     required: true

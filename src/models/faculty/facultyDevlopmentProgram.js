@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const FacultyFdpSchema = new mongoose.Schema({
   facultyId: {
-    type: String,
-    required: true
+    type: mongoose.Schema.Types.ObjectId, ref: 'FacultyProfile'
   },
   facultyName: {
     type: String,
