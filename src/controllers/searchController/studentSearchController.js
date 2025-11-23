@@ -21,19 +21,19 @@ const studentSearchController = {
     getInfo: async (req, res) => {
         let studentId = req.params.studentId;
 
-        let certificates = await Certificates.findOne({ studentId: studentId })
-        let hackathons = await Hackathon.findOne({ studentId: studentId })
-        let higherStudies = await HigherStudies.findOne({ studentId: studentId })
-        let internship = await Internship.findOne({ studentId: studentId })
-        let placement = await Placement.findOne({ studentId: studentId })
-        let membership = await Membership.findOne({ studentId: studentId })
-        let projectWork = await ProjectWork.findOne({ studentId: studentId })
-        let researchPaper = await ResearchPaper.findOne({ studentId: studentId })
-        let sports = await Sports.findOne({ studentId: studentId })
-        let startups = await Startups.findOne({ studentId: studentId })
-        let extraCurricular = await ExtraCurricular.findOne({ studentId: studentId })
-        let profile = await Profile.findOne({ studentId: studentId })
-        let techicalNontechnical = await TechnicalNonTechinal.findOne({ studentId: studentId })
+        let certificates = await Certificates.findOne({ studentId })
+        let hackathons = await Hackathon.findOne({ studentId })
+        let higherStudies = await HigherStudies.findOne({ studentId })
+        let internship = await Internship.findOne({ studentId })
+        let placement = await Placement.findOne({ studentId })
+        let membership = await Membership.findOne({ studentId })
+        let projectWork = await ProjectWork.findOne({ studentId })
+        let researchPaper = await ResearchPaper.findOne({ studentId })
+        let sports = await Sports.findOne({ studentId })
+        let startups = await Startups.findOne({ studentId })
+        let extraCurricular = await ExtraCurricular.findOne({ studentId })
+        let profile = await Profile.findOne({ studentId })
+        let techicalNontechnical = await TechnicalNonTechinal.findOne({ studentId })
 
         res.json({
             profile: profile,
@@ -53,3 +53,5 @@ const studentSearchController = {
         })
     }
 }
+
+module.exports = studentSearchController ;

@@ -29,6 +29,7 @@ const institueFilesRouter = require("./src/fileRoutes/institute/instituteFiles.j
 const studentFilesRouter = require("./src/fileRoutes/student/studentFiles.js");
 const departmentFilesRouter = require("./src/fileRoutes/department/departmentFIles.js");
 const SearchController = require("./src/controllers/searchController/facultySearchController.js");
+const studentSearchController = require("./src/controllers/searchController/studentSearchController.js")
 
 
 // // ✅ Schema for Excel rows
@@ -57,7 +58,9 @@ app.use("/api/v1/upload/institute" , institueFilesRouter )
 app.use("/api/v1/upload/student" , studentFilesRouter )
 
 
-app.get("/search/:facultyId", SearchController.getInfo)
+app.get("/api/v1/search/faculty/:facultyId", SearchController.getInfo);
+app.get("/api/v1/search/student/:studentId", studentSearchController.getInfo);
+
 
 
 // ✅ Upload file as base64

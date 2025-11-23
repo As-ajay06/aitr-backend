@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
 const StudentCertificateSchema = new mongoose.Schema({
-    studentId: {
-    type: mongoose.Schema.Types.ObjectId ,
-    required: true,
-    unique: true // Assuming ID is unique
+  studentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'StudentProfile',
   },
   certificateId: {
     type: String,

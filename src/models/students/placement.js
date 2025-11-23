@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const StudentPlacementSchema = new mongoose.Schema({
   studentId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    unique: true // Assuming ID is unique
+    ref: 'StudentProfile',
   },
   placementId: {
     type: String,

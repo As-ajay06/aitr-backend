@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const StudentStartupSchema = new mongoose.Schema({
   studentId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    unique: true // Assuming ID is unique
+    ref: 'StudentProfile',
   },
   startupName: {
     type: String,

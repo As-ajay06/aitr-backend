@@ -7,8 +7,7 @@ const IndustryMentorSchema = new mongoose.Schema({
 const StudentProjectSchema = new mongoose.Schema({
   studentId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    unique: true // Assuming ID is unique
+    ref: 'StudentProfile',
   },
   projectTitle: {
     type: String,

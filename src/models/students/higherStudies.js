@@ -4,8 +4,7 @@ const StudentHigherEducationSchema = new mongoose.Schema({
 
   studentId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    unique: true // Assuming ID is unique
+    ref: 'StudentProfile',
   },
   courseName: {
     type: String,

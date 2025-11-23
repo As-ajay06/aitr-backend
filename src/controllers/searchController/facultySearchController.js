@@ -16,26 +16,27 @@ const ResearchProject = require("../../models/faculty/reasearchProjectGuided");
 
 const SearchController = {
     getInfo: async (req, res) => {
-        // given id, get all the data
 
+        // given id, get all the data
         const facultyId = req.params.facultyId;
+        console.log("this is facultyId" , facultyId)
 
         try {
 
-            let qualification = await Qalification.findOne({ facultyId: facultyId })
-            let booksAuthored = await BooksAuthored.findOne({ facultyId: facultyId })
-            let awards = await Awards.findOne({ facultyId: facultyId })
-            let facultyDevlopment = await DevlopmentProgram.findOne({ facultyId: facultyId })
-            let memberships = await Membership.findOne({ facultyId: facultyId })
-            let invitedTalks = await InvitedTalks.findOne({ facultyId: facultyId })
-            let patentGuided = await PatentGuided.findOne({ facultyId: facultyId })
-            let patentPublished = await PatentPublished.findOne({ facultyId: facultyId })
-            let phdSupervision = await PhdSupervision.findOne({ facultyId: facultyId })
-            let professionalBodies = await ProfessionalBodies.findOne({ facultyId: facultyId })
-            let certificates = await Certificates.findOne({ facultyId: facultyId })
-            let profile = await Profile.findOne({ facultyId: facultyId })
-            let researchPaper = await ResearchPaper.findOne({ facultyId: facultyId })
-            let researchProjects = await ResearchProject.findOne({ facultyId: facultyId })
+            let qualification = await Qalification.findOne({ facultyId })
+            let booksAuthored = await BooksAuthored.findOne({ facultyId })
+            let awards = await Awards.findOne({ facultyId })
+            let facultyDevlopment = await DevlopmentProgram.findOne({ facultyId })
+            let memberships = await Membership.findOne({ facultyId })
+            let invitedTalks = await InvitedTalks.findOne({ facultyId })
+            let patentGuided = await PatentGuided.findOne({ facultyId })
+            let patentPublished = await PatentPublished.findOne({ facultyId })
+            let phdSupervision = await PhdSupervision.findOne({ facultyId })
+            let professionalBodies = await ProfessionalBodies.findOne({ facultyId })
+            let certificates = await Certificates.findOne({ facultyId })
+            let profile = await Profile.findOne({ facultyId })
+            let researchPaper = await ResearchPaper.findOne({ facultyId })
+            let researchProjects = await ResearchProject.findOne({ facultyId })
 
             res.json({
                 profile: profile,
@@ -46,7 +47,7 @@ const SearchController = {
                 memberships : memberships,
                 invitedTalks: invitedTalks,
                 patentGuided: patentGuided,
-                patentPublished: PatentPublished,
+                patentPublished: patentPublished,
                 phdSupervision: phdSupervision,
                 professionalBodies: professionalBodies,
                 certificates: certificates,

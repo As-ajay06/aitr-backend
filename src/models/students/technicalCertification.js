@@ -2,10 +2,14 @@ const mongoose = require('mongoose');
 
 
 const TechologyUsedSchema = new mongoose.Schema({
-  technologyUsed : { type: String, trim: true, default: '' },
+  technologyUsed: { type: String, trim: true, default: '' },
 }, { _id: false });
 
 const StudentCompetitionSchema = new mongoose.Schema({
+  studentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'StudentProfile',
+  },
   competitionId: {
     type: String,
     required: true,

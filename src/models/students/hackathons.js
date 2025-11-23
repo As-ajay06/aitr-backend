@@ -15,8 +15,7 @@ const TechnologyUsedSchema = new mongoose.Schema({
 const StudentHackathonSchema = new mongoose.Schema({
   studentId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    unique: true // Assuming ID is unique
+    ref: 'StudentProfile',
   },
   hackathonName: {
     type: String,
