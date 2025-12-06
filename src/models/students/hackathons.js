@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 
 
-const TeamMemberSchema = new mongoose.Schema({
-  memberName: { type: String, trim: true, default: '' },
-  role: { type: String, trim: true, default: '' }
-}, { _id: false });
+// const TeamMemberSchema = new mongoose.Schema({
+//   memberName: { type: String, trim: true, default: '' },
+//   role: { type: String, trim: true, default: '' }
+// }, { _id: false });
 
-const TechnologyUsedSchema = new mongoose.Schema({
-  memberName: { type: String, trim: true, default: '' },
-  role: { type: String, trim: true, default: '' }
-}, { _id: false });
+// const TechnologyUsedSchema = new mongoose.Schema({
+//   memberName: { type: String, trim: true, default: '' },
+//   role: { type: String, trim: true, default: '' }
+// }, { _id: false });
 
 const StudentHackathonSchema = new mongoose.Schema({
   studentId: {
@@ -26,7 +26,7 @@ const StudentHackathonSchema = new mongoose.Schema({
     required: true
   },
   teamDetails: {
-    type: [TeamMemberSchema], // Array of team member names or IDs
+    type: String, // Array of team member names or IDs
     required: true
   },
   result: {
@@ -53,7 +53,7 @@ const StudentHackathonSchema = new mongoose.Schema({
     type: String
   },
   technologyUsed: {
-    type: [TechnologyUsedSchema] // Array of technologies like ["React", "Node.js"]
+    type: [String] // Array of technologies like ["React", "Node.js"]
   },
   prizeMoney: {
     type: Number

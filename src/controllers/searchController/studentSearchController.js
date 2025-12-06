@@ -1,5 +1,6 @@
 
 
+
 // models
 
 const Certificates = require("../../models/students/studentCertification")
@@ -32,7 +33,7 @@ const studentSearchController = {
         let sports = await Sports.findOne({ studentId })
         let startups = await Startups.findOne({ studentId })
         let extraCurricular = await ExtraCurricular.findOne({ studentId })
-        let profile = await Profile.findOne({ studentId })
+        let profile = await Profile.findOne({ _id:studentId })
         let techicalNontechnical = await TechnicalNonTechinal.findOne({ studentId })
 
         res.json({

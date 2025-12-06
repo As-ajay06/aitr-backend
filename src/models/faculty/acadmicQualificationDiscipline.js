@@ -14,7 +14,7 @@ const acadmicQualificationDiscipline = new mongoose.Schema({
     required: true
   },
   highestDegree: {
-    type: [MemberQualificationSchema],
+    type: String,
     required: true // e.g., Ph.D., M.Tech, MBA
   },
   universityOrInstitute: {

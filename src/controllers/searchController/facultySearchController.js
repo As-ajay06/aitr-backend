@@ -19,10 +19,11 @@ const SearchController = {
 
         // given id, get all the data
         const facultyId = req.params.facultyId;
-        console.log("this is facultyId" , facultyId)
+        console.log(req.method , facultyId)
 
         try {
 
+            
             let qualification = await Qalification.findOne({ facultyId })
             let booksAuthored = await BooksAuthored.findOne({ facultyId })
             let awards = await Awards.findOne({ facultyId })
@@ -34,7 +35,7 @@ const SearchController = {
             let phdSupervision = await PhdSupervision.findOne({ facultyId })
             let professionalBodies = await ProfessionalBodies.findOne({ facultyId })
             let certificates = await Certificates.findOne({ facultyId })
-            let profile = await Profile.findOne({ facultyId })
+            let profile = await Profile.findOne({ _id: facultyId })
             let researchPaper = await ResearchPaper.findOne({ facultyId })
             let researchProjects = await ResearchProject.findOne({ facultyId })
 

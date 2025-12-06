@@ -11,13 +11,9 @@ function adminAuthentication () {
     }
     
     const decoded = jwt.verify(token , process.env.JWT_SECRET);
-    /*
-    decoded = {
-        facultyId : wsdsfsg34q3rwet3w4t3rt,
-        role: "admin", "superadmin"
-    }
-    */
+    
     if(decoded){
+        // sending the faculty id to the routes that is using it.
         res.facultyId = decoded.facultyId ;
         next()
     }else{

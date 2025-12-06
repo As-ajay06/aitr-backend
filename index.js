@@ -1,4 +1,5 @@
-
+require('dotenv').config();
+const jwt = require("jsonwebtoken");
 const express = require("express")
 const multer = require("multer")
 const FileModel = require("./src/config/db.js");
@@ -29,7 +30,8 @@ const institueFilesRouter = require("./src/fileRoutes/institute/instituteFiles.j
 const studentFilesRouter = require("./src/fileRoutes/student/studentFiles.js");
 const departmentFilesRouter = require("./src/fileRoutes/department/departmentFIles.js");
 const SearchController = require("./src/controllers/searchController/facultySearchController.js");
-const studentSearchController = require("./src/controllers/searchController/studentSearchController.js")
+const studentSearchController = require("./src/controllers/searchController/studentSearchController.js");
+const { authorizeRoles } = require('./src/midldeware/auth.js');
 
 
 // // ✅ Schema for Excel rows
@@ -52,7 +54,7 @@ app.use("/api/v1/faculty", facultyRouter);
 app.use("/api/v1/department", departmentRouter);
 
 // file uploading routes
-app.use("/api/v1/upload/deparment" , departmentFilesRouter )
+app.use("/api/v1/upload/deparment", departmentFilesRouter )
 app.use("/api/v1/upload/faculty" , facultyFilesRouter )
 app.use("/api/v1/upload/institute" , institueFilesRouter )
 app.use("/api/v1/upload/student" , studentFilesRouter )
@@ -60,6 +62,19 @@ app.use("/api/v1/upload/student" , studentFilesRouter )
 
 app.get("/api/v1/search/faculty/:facultyId", SearchController.getInfo);
 app.get("/api/v1/search/student/:studentId", studentSearchController.getInfo);
+
+
+// authentication of user if he/she is looged in on not
+
+app.post('/api/auth/verify', (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.json({ valid: true, user: decoded });
+  } catch (err) {
+    res.status(401).json({ valid: false });
+  }
+});
 
 
 

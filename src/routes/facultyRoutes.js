@@ -1,5 +1,6 @@
 const express = require('express');
 const facultyRouter = express.Router();
+const { authorizeRoles } = require('../midldeware/auth')
 
 
 // Import and define routes for acedminc qualification
@@ -65,7 +66,7 @@ facultyRouter.delete('/professional-certificate/:id', deleteProfessionalCertific
 // Import and define routes for profile
 const { createFacultyProfile, getAllFacultyProfiles, deleteFacultyProfileById } = require('../controllers/faculty/profileControllers');
 facultyRouter.post('/profile', createFacultyProfile);
-facultyRouter.get('/profiles', getAllFacultyProfiles);
+facultyRouter.get('/profiles', authorizeRoles, getAllFacultyProfiles);
 facultyRouter.delete('/profile/:id', deleteFacultyProfileById);    
 
 // Import and define routes for research papers
@@ -81,7 +82,7 @@ facultyRouter.get('/research-projects-guided', getAllResearchProjectsGuided);
 facultyRouter.delete('/research-project-guided/:id', deleteResearchProjectGuidedById);
 
 
-const { createFacultyMembership, getAllFacultyMembership, deleteFacultyMembership } = require("../controllers/faculty/facultyMembershipController")
+const { createFacultyMembership, getAllFacultyMembership, deleteFacultyMembership } = require("../controllers/faculty/facultyMembershipController");
 facultyRouter.post('/faculty-membership', createFacultyMembership);
 facultyRouter.get('/faculty-membership', getAllFacultyMembership);
 facultyRouter.delete('/faculty-membership/:id', deleteFacultyMembership);

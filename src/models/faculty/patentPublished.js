@@ -39,7 +39,7 @@ const Patentpublished = new mongoose.Schema({
     required: true
   },
   coInventors: {
-    type: [CoIntentorSchema] // Array of co-inventor names
+    type: String // Array of co-inventor names
   },
   country: {
     type: String,

@@ -32,6 +32,7 @@ adminRouter.post("/login", async (req, res) => {
   try {
     const { email, password, role } = req.body;
 
+    // there is some erroe in this place
     // super admin check
     if (role === "superadmin") {
       const user = await superAdmin.findOne({ email , password });
