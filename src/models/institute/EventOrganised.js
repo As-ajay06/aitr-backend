@@ -18,7 +18,7 @@ const EventOrganisedSchema = new mongoose.Schema({
     required: true
   },
   numberOfParticipants: {
-    type: Number,
+    type: Array,
     required: true
   },
   date: {

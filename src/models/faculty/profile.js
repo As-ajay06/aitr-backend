@@ -31,7 +31,7 @@ const FacultyProfileSchema = new mongoose.Schema({
   },
   category: String,
   teachingExperience: {
-    type: Number,
+    type: String,
     required: true,
     min: 0
   },

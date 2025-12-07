@@ -76,7 +76,14 @@ studentRouter.get("/technicalNontechnical", getTechnicalNonTechnical);
 studentRouter.delete("/technicalNontechnical/:id", deleteTechnicalNonTechnicalById);
 
 // todo : to create route for the capstone project
-// todo : to create route for internship
+
+// Import and define routes for student Internship
+const { createInternship , getAllInternships , deleteInternshipById } = require("../controllers/students/intershipControllers")
+studentRouter.post("/internship" , createInternship);
+studentRouter.get("/internships" , getAllInternships);
+studentRouter.delete("/internship/:id" , deleteInternshipById);
+
+
 // todo : to create route for professional management
 
 module.exports = studentRouter ;

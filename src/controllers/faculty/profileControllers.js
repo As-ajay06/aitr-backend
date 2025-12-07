@@ -1,6 +1,8 @@
 const facultyProfile = require("../../models/faculty/profile");
 
 exports.createFacultyProfile = async (req, res) => {
+
+    console.log("i am this user", res.user)
     const profile = new facultyProfile(req.body);
     await profile.save();
     res.json({
