@@ -13,11 +13,6 @@ const StudentInternshipSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'StudentProfile',
   },
-  internshipId: {
-    type: String,
-    required: true,
-    unique: true
-  },
   studentName: {
     type: String,
     required: true
@@ -51,7 +46,7 @@ const StudentInternshipSchema = new mongoose.Schema({
     required: true
   },
   stipend: {
-    type: Number
+    type: String
   },
   startDate: {
     type: Date,

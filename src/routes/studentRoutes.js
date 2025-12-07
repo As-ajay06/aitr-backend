@@ -26,7 +26,7 @@ studentRouter.post("/certificate", createCretificate);
 studentRouter.get("/certificates", getAllCertificates);
 studentRouter.delete("/certificate/:id", deleteCertificateById);
 
-// Import and define routes for student projects
+// Import and define routes for student projects and capstone
 
 const { createProjectWork, getAllProjectWorks , deleteProjectWorkById } = require("../controllers/students/projectWorkControllers");
 studentRouter.post("/project", createProjectWork);
@@ -75,8 +75,6 @@ studentRouter.post("/technicalNontechnical", createTechnicalNonTechnical);
 studentRouter.get("/technicalNontechnical", getTechnicalNonTechnical);
 studentRouter.delete("/technicalNontechnical/:id", deleteTechnicalNonTechnicalById);
 
-// todo : to create route for the capstone project
-
 // Import and define routes for student Internship
 const { createInternship , getAllInternships , deleteInternshipById } = require("../controllers/students/intershipControllers")
 studentRouter.post("/internship" , createInternship);
@@ -84,6 +82,6 @@ studentRouter.get("/internships" , getAllInternships);
 studentRouter.delete("/internship/:id" , deleteInternshipById);
 
 
-// todo : to create route for professional management
+// todo : to create route for professional management ? check this out
 
 module.exports = studentRouter ;
