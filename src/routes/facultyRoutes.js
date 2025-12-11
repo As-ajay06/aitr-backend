@@ -66,7 +66,7 @@ facultyRouter.delete('/professional-certificate/:id', deleteProfessionalCertific
 // Import and define routes for profile
 const { createFacultyProfile, getAllFacultyProfiles, deleteFacultyProfileById } = require('../controllers/faculty/profileControllers');
 facultyRouter.post('/profile', createFacultyProfile);
-facultyRouter.get('/profiles', authorizeRoles, getAllFacultyProfiles);
+facultyRouter.get('/profiles', getAllFacultyProfiles);
 facultyRouter.delete('/profile/:id', deleteFacultyProfileById);    
 
 // Import and define routes for research papers

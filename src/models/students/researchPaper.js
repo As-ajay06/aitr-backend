@@ -45,7 +45,7 @@ const StudentResearchPaperSchema = new mongoose.Schema({
     required: true
   },
   coAuthors: {
-    type: [CoAuthorsSchema] // list of co-author names
+    type: [Array] // list of co-author names
   },
   indexing: {
     type: [String], // e.g., ["Scopus", "SCI"]
@@ -55,7 +55,7 @@ const StudentResearchPaperSchema = new mongoose.Schema({
     type: String // File path or URL
   },
   facultyGuide: {
-    type: [FacultyGuidedSchema] // Name of the faculty mentor/guide
+    type: [Array] // Name of the faculty mentor/guide
   }
 }, {
   timestamps: true

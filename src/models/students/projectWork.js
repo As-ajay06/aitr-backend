@@ -25,7 +25,7 @@ const StudentProjectSchema = new mongoose.Schema({
     type: String // Example: "6th", "Spring 2025", etc.
   },
   industryMentor: {
-    type: [IndustryMentorSchema] // Optional
+    type: Array // Optional
   },
   projectOutcome: {
     type: [String], // e.g., ["Prototype", "Patent", "Paper"]

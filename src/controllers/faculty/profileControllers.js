@@ -15,12 +15,12 @@ exports.getAllFacultyProfiles = async (req, res) => {
     const user = req.user;
     // user = { id: objectId , role: 'superadmin' }
 
-    if(user.role == 'superadmin'){
+    // if(user.role == 'superadmin'){
         const profiles = await facultyProfile.find({});
         res.json({
             profiles
         });
-    }
+    // }
 
     res.json({
         message: 'you are not authorized to access the content'

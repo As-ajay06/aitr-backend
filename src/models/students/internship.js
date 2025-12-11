@@ -59,7 +59,7 @@ const StudentInternshipSchema = new mongoose.Schema({
     type: String // File path or URL
   },
   technologyUsed: {
-    type: [TechnologyUsedSchema] // Array of technologies
+    type: [Array] // Array of technologies
   },
   projectName: {
     type: String

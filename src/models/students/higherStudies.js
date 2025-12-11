@@ -30,6 +30,10 @@ const StudentHigherEducationSchema = new mongoose.Schema({
   admissionYear: {
     type: Number,
     required: true
+  },
+  admissionDate: {
+    type: Date,
+    required: true
   }
 }, {
   timestamps: true
