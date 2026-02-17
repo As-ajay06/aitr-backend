@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 
 const FacultyProfileSchema = new mongoose.Schema({
-  // facultyId: {
-  //   type: String,
-  //   unique: true,
-  //   trim: true
-  // },
+
+  facultyId: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+  },
   name: {
     type: String,
     required: true,
@@ -18,7 +20,11 @@ const FacultyProfileSchema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
-  qualification: String,
+  // qualification: String
+  qualification: {   // it should be comma separated values.
+    type: String,
+    required: true,
+  },
   department: {
     type: String,
     required: true,

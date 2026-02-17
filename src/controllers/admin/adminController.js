@@ -49,16 +49,14 @@ adminRouter.post("/login", async (req, res) => {
       res.status(200).json(
         {
           token,
-          user: { name: user.name, email: user.email, role: user.role }
+          user: { name: user.name, email: user.email, role: user.role , department: user.department }
         });
 
     }
     const user = await adminProfile.findOne({ email });
 
     if (!user) return res.status(404).json({ message: "User not found" });
-    const isMatch = await user.comparePassword(password);
 
-    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
     // made changes here
     const facultyId = user._id ;

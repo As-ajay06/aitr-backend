@@ -1,12 +1,15 @@
 const express = require("express");
+const { protect, authorizeRoles, roleBasedDataFilter } = require("../midldeware/auth");
 
 const studentRouter = express.Router();
 
 // Define routes for student profiles
-const { createStudentProfile, getAllStudentProfiles, deleteStudentProfile } = require("../controllers/students/studentProfile.controller");
-studentRouter.post("/profile" , createStudentProfile);
-studentRouter.get("/profiles" , getAllStudentProfiles);
-studentRouter.delete("/profile/:id" , deleteStudentProfile);
+const { createStudentProfile, getAllStudentProfiles, deleteStudentProfile, updateStudentProfile } = require("../controllers/students/studentProfile.controller");
+studentRouter.post("/profile", protect, authorizeRoles, createStudentProfile);
+// Apply roleBasedDataFilter - superadmin sees all, admin sees department, faculty sees own data
+studentRouter.get("/profiles", protect, authorizeRoles, roleBasedDataFilter({ ownerField: 'createdBy', department: 'department' }), getAllStudentProfiles);
+studentRouter.delete("/profile/:id", protect, deleteStudentProfile);
+studentRouter.put("/profile/:id", protect, updateStudentProfile);
 
 // Import and define routes for startups
 const { createStartup, getAllStartups, deleteStartupById } = require("../controllers/students/startupsControllers");
@@ -18,7 +21,7 @@ studentRouter.delete("/startup/:id", deleteStartupById);
 const { createSports, getAllSports, deleteSportsById } = require("../controllers/students/sportsControllers");
 studentRouter.post("/sports", createSports);
 studentRouter.get("/sports", getAllSports);
-studentRouter.delete("/sports/:id", deleteSportsById);  
+studentRouter.delete("/sports/:id", deleteSportsById);
 
 // Import and define routes for certificates
 const { createCretificate, getAllCertificates, deleteCertificateById } = require("../controllers/students/certificateControllers");
@@ -28,10 +31,10 @@ studentRouter.delete("/certificate/:id", deleteCertificateById);
 
 // Import and define routes for student projects and capstone
 
-const { createProjectWork, getAllProjectWorks , deleteProjectWorkById } = require("../controllers/students/projectWorkControllers");
+const { createProjectWork, getAllProjectWorks, deleteProjectWorkById } = require("../controllers/students/projectWorkControllers");
 studentRouter.post("/project", createProjectWork);
 studentRouter.get("/projects", getAllProjectWorks);
-studentRouter.delete("/project/:id", deleteProjectWorkById);    
+studentRouter.delete("/project/:id", deleteProjectWorkById);
 
 // Import and define routes for research papers
 const { createResearchPaper, getAllResearchPapers, deleteResearchPaperById } = require("../controllers/students/researchPaperControllers");
@@ -42,7 +45,7 @@ studentRouter.delete("/research-paper/:id", deleteResearchPaperById);
 // Import and define routes for student placements
 const { createPlacement, getAllPlacements, deletePlacementById } = require("../controllers/students/placementControllers");
 studentRouter.post("/placement", createPlacement);
-studentRouter.get("/placements", getAllPlacements); 
+studentRouter.get("/placements", getAllPlacements);
 studentRouter.delete("/placement/:id", deletePlacementById);
 
 // Import and define routes for student hackathons
@@ -76,12 +79,12 @@ studentRouter.get("/technicalNontechnical", getTechnicalNonTechnical);
 studentRouter.delete("/technicalNontechnical/:id", deleteTechnicalNonTechnicalById);
 
 // Import and define routes for student Internship
-const { createInternship , getAllInternships , deleteInternshipById } = require("../controllers/students/intershipControllers")
-studentRouter.post("/internship" , createInternship);
-studentRouter.get("/internships" , getAllInternships);
-studentRouter.delete("/internship/:id" , deleteInternshipById);
+const { createInternship, getAllInternships, deleteInternshipById } = require("../controllers/students/intershipControllers")
+studentRouter.post("/internship", createInternship);
+studentRouter.get("/internships", getAllInternships);
+studentRouter.delete("/internship/:id", deleteInternshipById);
 
 
 // todo : to create route for professional management ? check this out
 
-module.exports = studentRouter ;
+module.exports = studentRouter;

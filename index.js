@@ -45,7 +45,7 @@ app.use(cors());
 app.use(express.json());
 
 // admin routes
-app.use("/api/v1/admin" , adminRouter)
+app.use("/api/v1/admin", adminRouter)
 
 // department routes
 app.use("/api/v1/students", studentRouter)
@@ -54,10 +54,10 @@ app.use("/api/v1/faculty", facultyRouter);
 app.use("/api/v1/department", departmentRouter);
 
 // file uploading routes
-app.use("/api/v1/upload/deparment", departmentFilesRouter )
-app.use("/api/v1/upload/faculty" , facultyFilesRouter )
-app.use("/api/v1/upload/institute" , institueFilesRouter )
-app.use("/api/v1/upload/student" , studentFilesRouter )
+app.use("/api/v1/upload/deparment", departmentFilesRouter)
+app.use("/api/v1/upload/faculty", facultyFilesRouter)
+app.use("/api/v1/upload/institute", institueFilesRouter)
+app.use("/api/v1/upload/student", studentFilesRouter)
 
 
 app.get("/api/v1/search/faculty/:facultyId", SearchController.getInfo);
@@ -68,7 +68,7 @@ app.get("/api/v1/search/student/:studentId", studentSearchController.getInfo);
 
 app.post('/api/auth/verify', (req, res) => {
   try {
-    const token = req.headers.authorization?.split(" ")[1];
+    const token = req.headers.authorization;
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     res.json({ valid: true, user: decoded });
   } catch (err) {
