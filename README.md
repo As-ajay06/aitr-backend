@@ -1,18 +1,5 @@
-## Instruction to How to backend on local Machine
+## AITR - CMS backned
+AITR - CMS backend is what makes the AITR-CMS, this is the core of AITR-CMS.
 
-
-```
-    git clone
-
-    cd [folder]
-
-    npm install
-
-```
-
-install all the depedencies
-
-```
-node index.js
-
-```
+### AITR-CMS backend guidelines
+AITR-CMS bakcned have many files go through the structure of the files.
